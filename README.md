@@ -1,7 +1,7 @@
-# JIRA plugin for http header authentication (SSO / Kerberos)
+# Stash plugin for http header authentication (SSO / Kerberos)
 
 This plugin provides authentication based on a http header  (default: X_Forwarded_User). 
-The authenticator will fall back to the default JIRA authenticator, so everything external should keep working as expected. 
+The authenticator will fall back to the default Stash authenticator, so everything external should keep working as expected. 
 
 WARNING: This plugin is currently not actively developed or maintained. 
 It was created for an organisation that no longer does or uses FOSS, so it was moved. 
@@ -23,7 +23,7 @@ There are a few things you need in order to install this plugin:
 * Copy the target/russo-1.0.jar file to the WEB-INF/libs folder of your Stash installation
 * Modify the WEB-INF/classes/stash-plugins/authentication.xml file by commenting out existing auth classes and adding <authenticator class="ch.fuchsnet.seraph.RussoAuthenticator"/>
 * Restart your Stash instance
-* If it doesn't work as expected, check your JIRA logs. If you need more verbose information, set useDebug to true and recompile and reinstall the package
+* If it doesn't work as expected, check your Stash logs. If you need more verbose information, set useDebug to true and recompile and reinstall the package
 
 ## Configuring your httpd
 
@@ -40,14 +40,14 @@ SSLCertificateFile /etc/pki/tls/certs/mypubliccert.pem
 SSLCertificateKeyFile /etc/pki/tls/private/privatekey.pem
 ProxyPreserveHost On
 ProxyRequests Off
-ServerName jira.mycompany.tld
+ServerName stash.mycompany.tld
 ProxyPass / http://localhost:8080/
 ProxyPassReverse / http://localhost:8080/
 SSLProxyEngine On
 
     <Location />
         AuthType Kerberos
-        AuthName "Jira Kerberos Auth"
+        AuthName "Stash Kerberos Auth"
         KrbMethodNegotiate On
         KrbMethodK5Passwd On
         KrbAuthRealms MYREALM
