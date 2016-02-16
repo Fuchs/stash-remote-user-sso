@@ -3,6 +3,13 @@
 This plugin provides authentication based on a http header  (default: X_Forwarded_User). 
 The authenticator will fall back to the default JIRA authenticator, so everything external should keep working as expected. 
 
+WARNING: This plugin is currently not actively developed or maintained. 
+It was created for an organisation that no longer does or uses FOSS, so it was moved. 
+Feel free to use it at your own risk, or to fork and improve it. 
+I hope it is helpful anyway.
+
+This plugin is for stash. For the newly renamed "Bitbucket Server", see my GitHub account for an updated version.
+
 ## License 
 
 This software is distributed under the GNU Lesser General Public License 2.1. See COPYING for details. 
@@ -12,10 +19,10 @@ There are a few things you need in order to install this plugin:
 
 * Get the Atlassian SDK as described at [Atlassian](https://developer.atlassian.com/display/DOCS/Set+up+the+Atlassian+Plugin+SDK+and+Build+a+Project)
 * Build the .jar file with the `atlas-package` command in the root folder (containing the pom.xml) 
-* Stop your JIRA instance if it is running
-* Copy the target/russo-1.0.jar file to the WEB-INF/libs folder of your JIRA installation
-* Modify the WEB-INF/classes/seraph-config.xml file by commenting out existing auth classes and adding <authenticator class="ch.bielbienne.seraph.BielBienneAuthenticator"/>
-* Restart your JIRA instance
+* Stop your Stash instance if it is running
+* Copy the target/russo-1.0.jar file to the WEB-INF/libs folder of your Stash installation
+* Modify the WEB-INF/classes/stash-plugins/authentication.xml file by commenting out existing auth classes and adding <authenticator class="ch.fuchsnet.seraph.RussoAuthenticator"/>
+* Restart your Stash instance
 * If it doesn't work as expected, check your JIRA logs. If you need more verbose information, set useDebug to true and recompile and reinstall the package
 
 ## Configuring your httpd
